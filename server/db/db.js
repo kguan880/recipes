@@ -7,6 +7,13 @@ function getRecipes(db = connection){
     return db('recipes').select()
 }
 
+function addRecipe(recipe, db = connection){
+    return db('recipes').insert({
+        name: recipe.name
+    })
+}
+
 module.exports = {
-    getRecipes
+    getRecipes,
+    addRecipe
 }
