@@ -1,14 +1,7 @@
-import {getRecipes} from '../apis/recipe'
+import {getRecipes, addRecipe} from '../apis/recipe'
 
-const ADD_RECIPE = 'ADD_RECIPE'
 const SAVE_RECIPE = 'SAVE_RECIPE'
 
-export function addRecipe(recipe){
-    return {
-        type: ADD_RECIPE,
-        recipe,
-    }
-}
 
 export function saveRecipe(recipes){
     return{
@@ -22,6 +15,15 @@ export function fetchRecipes(){
         getRecipes()
             .then(recipes =>{
                 dispatch(saveRecipe(recipes))
+            })
+    }
+}
+
+export function saveRecipes(wombat){
+    return (dispatch) =>{
+        addRecipe(wombat)
+            .then(() =>{
+                dispatch(fetchRecipes())
             })
     }
 }

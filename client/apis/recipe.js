@@ -7,3 +7,8 @@ export function getRecipes(){
         .then(res=>res.body)
 }
 
+export function addRecipe(wombat){
+    return request.post(baseUrl)
+        .send(wombat)
+        .then(() => null)
+}

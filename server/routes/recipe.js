@@ -14,9 +14,8 @@ router.post('/', (req,res) =>{
     const recipe = req.body
 
     addRecipe(recipe)
-        .then(recipes => {
-            console.log(recipes)
-            res.json(recipes)
+        .then(id => {
+            res.json({id :id})
         })
 })
 

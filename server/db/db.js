@@ -8,9 +8,8 @@ function getRecipes(db = connection){
 }
 
 function addRecipe(recipe, db = connection){
-    return db('recipes').insert({
-        name: recipe.name
-    })
+    return db('recipes').insert(recipe)
+        .then(ids => ids)
 }
 
 module.exports = {

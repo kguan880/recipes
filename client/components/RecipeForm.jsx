@@ -1,6 +1,6 @@
 import React from 'react'
-import {addRecipe} from '../actions/index'
 import { connect } from 'react-redux'
+import {saveRecipes} from '../actions/index'
 
 class RecipeForm extends React.Component{
 
@@ -10,11 +10,15 @@ class RecipeForm extends React.Component{
 
     handleSubmit = (event) =>{
         event.preventDefault()
-
-        this.props.dispatch(addRecipe(this.state))
         //USE ANOTHER THUNK FUNCTION HERE
         //SAVES IT TO THE DATABASE THROUGH API
         //THEN DISPATCH REDUX FUNCTION
+        const wombat = {name: this.state.name}
+        this.props.dispatch(saveRecipes(wombat))
+
+        this.setState({
+            name: ''
+        })
     }
 
     handleChange = (event) =>{
