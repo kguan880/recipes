@@ -1,21 +1,28 @@
 import React from 'react'
+import {addRecipe} from '../actions/index'
+import { connect } from 'react-redux'
 
-class RecipeFrom extends React.Component{
+class RecipeForm extends React.Component{
+
+    state = {
+        name: ''
+    }
 
     handleSubmit = (event) =>{
         event.preventDefault()
 
-        console.log('submit')
+        this.props.dispatch(addRecipe(this.state))
+        //USE ANOTHER THUNK FUNCTION HERE
+        //SAVES IT TO THE DATABASE THROUGH API
+        //THEN DISPATCH REDUX FUNCTION
     }
 
     handleChange = (event) =>{
-        console.log('change')
-
-        console.log(event.target.value)
-
         this.setState({
             [event.target.name]: event.target.value
         })
+        console.log(this.state.name)
+
     }
 
     render() {
@@ -23,7 +30,7 @@ class RecipeFrom extends React.Component{
             <form onSubmit={this.handleSubmit}>
                 <label>
                     Enter Recipe Here:
-                    <input onChange={this.handleChange} type="text" name="recipe"/>
+                    <input onChange={this.handleChange} type="text" name="name" value={this.state.name}/>
                 </label>
 
                 <input type="submit" value="Submit" onChange={this.handleChange}/>
@@ -32,4 +39,4 @@ class RecipeFrom extends React.Component{
     }
 }
 
-export default RecipeFrom
+export default connect()(RecipeForm)

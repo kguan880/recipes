@@ -6,8 +6,7 @@ function RecipeList (props) {
         <div>
             <h1>Recipes!</h1>
             <ul>
-                {props.recipes.map(recipe => <li key={recipe.name}>{recipe.name}</li>)}
-                {console.log(props.recipes[0].name)}
+                {props.recipes.map(recipe => <li key={recipe.id}>{recipe.name}</li>)}
             </ul>
         </div>
     )

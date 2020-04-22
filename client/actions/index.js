@@ -17,7 +17,7 @@ export function saveRecipe(recipes){
     }
 }
 
-export function fetchRecipe(){
+export function fetchRecipes(){
     return (dispatch) =>{
         getRecipes()
             .then(recipes =>{
