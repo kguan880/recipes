@@ -12,3 +12,7 @@ export function addRecipe(wombat){
         .send(wombat)
         .then(() => null)
 }
+
+export function deleteRecipe(id){
+    return request.delete(baseUrl + '/' + `${id}`)
+}

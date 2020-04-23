@@ -7,12 +7,22 @@ function getRecipes(db = connection){
     return db('recipes').select()
 }
 
+function getRecipeById(recipeID, db=connection){
+    return db('recipes').where('id', recipeID).select()
+}
+
 function addRecipe(recipe, db = connection){
     return db('recipes').insert(recipe)
-        .then(ids => ids)
+        .then(ids => ids[0])
+}
+
+function deleteRecipe(recipeID, db = connection){
+    return db('recipes').where('id', recipeID).del()
 }
 
 module.exports = {
     getRecipes,
-    addRecipe
+    addRecipe,
+    deleteRecipe,
+    getRecipeById
 }
