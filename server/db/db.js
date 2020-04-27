@@ -20,9 +20,25 @@ function deleteRecipe(recipeID, db = connection){
     return db('recipes').where('id', recipeID).del()
 }
 
+function getIngredients(db = connection){
+    return db('ingredients').select()
+}
+
+function getIngredientsById(ingredientID, db = connection){
+    return db('ingredients').where('id',ingredientID).select()
+}
+
+function addIngredient(ingredient, db = connection){
+    return db('ingredients').insert(ingredient)
+        .then(ids => ids[0])
+}
+
 module.exports = {
     getRecipes,
     addRecipe,
     deleteRecipe,
-    getRecipeById
+    getRecipeById,
+    getIngredients,
+    getIngredientsById,
+    addIngredient
 }
